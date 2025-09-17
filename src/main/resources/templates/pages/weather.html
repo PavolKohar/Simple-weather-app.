@@ -21,12 +21,15 @@
 </div>
 
 <!-- Zobrazenie karty IBA AK nie je chyba -->
-<div th:if="${error == null}" class="container d-flex justify-content-center mt-5">
+<div th:if="${error == null}" class="container d-flex flex-column align-items-center mt-5">
+
+    <h2 class="card-title mb-2" th:text="${city} + ', ' + ${country}">City, Country</h2>
+
+    <!-- Card for today -->
     <div class="card shadow" style="width: 22rem;">
         <div class="card-body text-center">
             <img th:src="@{'https://openweathermap.org/img/wn/' + ${icon} + '@2x.png'}" alt="Weather Icon">
-
-            <h4 class="card-title mb-2" th:text="${city} + ', ' + ${country}">City, Country</h4>
+            <h4 class="card-title mb-2" >NOW</h4>
             <h5 class="card-subtitle mb-2 text-muted" th:text="${description}">Clear sky</h5>
             <hr>
             <p class="card-text">
@@ -35,9 +38,35 @@
                 <strong>Wind:</strong> <span th:text="${wind} + ' m/s'">3.2 m/s</span>
             </p>
         </div>
-        <a th:href="@{/}" class="btn btn-success my-2">Go back</a>
+
+    </div>
+
+    <a th:href="@{/}" class="btn btn-success my-2">Go back</a>
+</div>
+<div class="container">
+    <hr>
+    <h2 class="text-center mb-4">Forecast</h2>
+
+    <div class="row g-4 justify-content-center" th:if="${forecastList}">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3"
+             th:each="forecast : ${forecastList}">
+            <div class="card shadow text-center h-100">
+                <div class="card-body">
+                    <img th:src="@{'https://openweathermap.org/img/wn/' + ${forecast.icon} + '@2x.png'}" alt="Weather Icon">
+                    <h5 class="card-title" th:text="${forecast.date}">Date</h5>
+                    <p class="text-muted" th:text="${forecast.description}">Clear sky</p>
+                    <hr>
+                    <p class="card-text">
+                        <strong>Temp:</strong> <span th:text="${forecast.temp} + ' °C'">22 °C</span><br>
+                        <strong>Humidity:</strong> <span th:text="${forecast.humidity} + ' %'">50%</span><br>
+                        <strong>Wind:</strong> <span th:text="${forecast.wind} + ' m/s'">3.2 m/s</span>
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
 
 
 

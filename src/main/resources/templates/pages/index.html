@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css"/>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<h1 class="text-center my-5">🌤 Weather App</h1>
+
+<div class="container d-flex justify-content-center align-items-center mt-5" style="min-height: 60vh;">
+    <div class="card p-5 shadow" style="width: 450px;">
+
+        <form th:action="@{/weather}" method="get">
+            <div class="mb-4">
+                <label for="city" class="form-label fs-5">Enter city</label>
+                <input type="text" class="form-control" id="city" name="city" placeholder="Bratislava">
+            </div>
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary btn-lg">See weather</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>

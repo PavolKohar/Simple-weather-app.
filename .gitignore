@@ -17,6 +17,7 @@ target/
 src/main/resources/application.properties
 .mvn/
 .idea/
+.DS_Store
 
 
 ### IntelliJ IDEA ###
